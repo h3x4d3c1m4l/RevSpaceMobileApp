@@ -1,6 +1,11 @@
 pipeline {
     agent { docker { image 'dmitryordenov/xamarin-android-builder' } }
-    stages {	
+    stages {
+		stage('restore') {
+			steps {
+				sh 'nuget restore src/RevSpaceMobile.sln'
+			}
+		}
         stage('build') {
             steps {
                 sh 'msbuild src/RevSpaceMobile.Android/RevSpaceMobile.Android.csproj /t:SignAndroidPackage /p:Configuration=Release'
