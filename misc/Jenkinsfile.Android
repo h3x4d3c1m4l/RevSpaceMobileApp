@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                msbuild build src/RevSpaceMobile.Android/RevSpaceMobile.Android.csproj
+                sh 'msbuild build src/RevSpaceMobile.Android/RevSpaceMobile.Android.csproj'
             }
         }
     }
