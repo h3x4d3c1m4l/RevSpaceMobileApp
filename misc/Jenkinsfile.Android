@@ -1,0 +1,10 @@
+pipeline {
+    agent { docker { image 'dmitryordenov/xamarin-android-builder' } }
+    stages {
+        stage('build') {
+            steps {
+                msbuild build src/RevSpaceMobile.Android/RevSpaceMobile.Android.csproj
+            }
+        }
+    }
+}
