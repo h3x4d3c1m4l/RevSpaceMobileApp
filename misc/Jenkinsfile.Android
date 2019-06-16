@@ -1,10 +1,11 @@
 pipeline {
     agent { docker { image 'dmitryordenov/xamarin-android-builder' } }
     stages {
-		stage('Initialize') {
+		stage('init') {
 			def dockerHome = tool 'myDocker'
 			env.PATH = "${dockerHome}/bin:${env.PATH}"
 		}
+		
         stage('build') {
             steps {
                 sh 'msbuild build src/RevSpaceMobile.Android/RevSpaceMobile.Android.csproj'
